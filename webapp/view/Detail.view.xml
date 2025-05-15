@@ -42,16 +42,5 @@
 				</content>
 			</Panel>
 		</f:content>
-		<!-- <f:footer>
-			<OverflowToolbar>
-				<ToolbarSpacer/>
-				<Button type="Emphasized" text="Edit" visible="{=!${viewModel>/bEditState}}"
-					press="handleEditPress"/>
-				<Button type="Accept" text="Save" visible="{viewModel>/bEditState}"
-					press="handleSavePress"/>
-				<Button type="Default" text="Cancel" visible="{viewModel>/bEditState}"
-					press="handleCancelPress"/>
-			</OverflowToolbar>
-		</f:footer> -->
 	</f:DynamicPage>
 </mvc:View>
