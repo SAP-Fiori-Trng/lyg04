@@ -35,36 +35,6 @@ sap.ui.define([
 
 		getRouter : function () {
 			return UIComponent.getRouterFor(this);
-		},
-		
-		handleEditPress: function() {
-			this.oViewModel.setProperty("/bEditState", true);
-		},
-		
-		handleSavePress: function() {
-			var oObject = this.oView.byId("dynamicPageId").getBindingContext().getProperty();
-			this.oView.byId("dynamicPageId").setBusy(true);
-			this.oDataModel.update(this.sPath, oObject, {
-				/*headers: {
-					"Content-ID": 1
-				},*/
-				groupId: "updateEmployee",
-				success: function(oRes) {
-					this.oView.byId("dynamicPageId").setBusy(false);
-					this.oViewModel.setProperty("/bEditState", false);
-					this.oEventBus.publish("fetchEmployeeData");
-					sap.m.MessageToast.show("Update Employee info successfully.");
-				}.bind(this),
-				error: function(error) {
-					this.oView.byId("dynamicPageId").setBusy(false);
-					sap.m.MessageBox.error("Update Employee info failed.");
-				}.bind(this)
-			});
-		},
-		
-		handleCancelPress: function() {
-			this.oViewModel.setProperty("/bEditState", false);
-			this.oDataModel.resetChanges([this.sPath]);
 		}
 
 		/**
