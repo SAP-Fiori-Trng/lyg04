@@ -95,12 +95,28 @@
                     "target": [
                         "MasterView"
                     ]
+                },
+                {
+                    "name": "Detail",
+                    "pattern": "Detail/{ID}",
+                    "target": [
+                        "MasterView",
+                        "DetailView"
+                    ]
                 }
             ],
             "targets": {
                 "MasterView": {
                     "id": "masterView",
-                    "name": "Master"
+                    "name": "Master",
+                    "viewLevel": 1
+                },
+                "DetailView": {
+                    "id": "detailView",
+                    "name": "Detail",
+                    "controlAggregation": "detailPages",
+					"viewLevel": 2,
+					"transition": "slide"
                 }
             }
         },

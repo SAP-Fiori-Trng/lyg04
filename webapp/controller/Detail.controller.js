@@ -1,11 +1,14 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function(Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+	"dw/fiori/trng/lyg04/model/formatter"
+], function(Controller, JSONModel, History, UIComponent, formatter) {
 	"use strict";
 
 	return Controller.extend("dw.fiori.trng.lyg04.controller.Detail", {
-
+		formatter: formatter,
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -18,16 +21,20 @@ sap.ui.define([
 				"bEditState": false
 			}), "viewModel");
 			this.oViewModel = this.oView.getModel("viewModel");
-			this.getRouter().getRoute("detail").attachMatched(this._onRouteMatched, this);
+			this.getRouter().getRoute("Detail").attachMatched(this._onRouteMatched, this);
 		},
 		
 		_onRouteMatched : function (oEvent) {
-			var oArgs, sEmployeeID;
+			var oArgs, sID;
 			oArgs = oEvent.getParameter("arguments");
-			sEmployeeID = oArgs.EmployeeID;
-			this.sPath = "/ZEMPLOYEEINFOSet('" + sEmployeeID + "')";
+			sID = oArgs.ID;
+			this.sPath = "/Products(" + Number(sID) + ")";
 			this.oView.byId("dynamicPageId").bindElement(this.sPath);
 			// this._fetchJSONData(sProductPath);
+		},
+
+		getRouter : function () {
+			return UIComponent.getRouterFor(this);
 		},
 		
 		handleEditPress: function() {

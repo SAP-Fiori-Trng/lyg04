@@ -113,5 +113,13 @@ sap.ui.define([
 				// this.getRouter().navTo("notFound", {}, true);
 			}
 		},
+
+		handleListSelectionChange: function(oEvent) {
+			var oSelectedItem = oEvent.getParameter("listItem"),
+				oSelectedItemData = oSelectedItem.getBindingContext("businessModel").getProperty();
+			this.getRouter().navTo("Detail", {
+				ID: oSelectedItemData.ID
+			}, Device.system.desktop);
+		},
     });
 });
