@@ -2,5 +2,44 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+		<subHeader>
+			<OverflowToolbar>
+				<SearchField value="{viewModel>/sQueryStr}" width="100%" placeholder="Please enter Name or ID..."
+					showRefreshButton="true" search="handleRefreshPress"/>
+			</OverflowToolbar>
+		</subHeader>
+        <content>
+			<List id="masterListId" items="{businessModel>/Products}" mode="SingleSelectMaster"
+				updateFinished="handleListUpdateFinished" selectionChange="handleListSelectionChange" busyIndicatorDelay="0">
+				<!--<headerToolbar>
+				</headerToolbar>-->
+				<items>
+					<ObjectListItem title="{businessModel>Name}" type="Active"
+						number="{
+							parts:[{path:'businessModel>Price'}, {path:'viewModel>/Unit'}],
+							type:'sap.ui.model.type.Currency',
+							formatOptions:{
+								showMeasure: true,
+								preserveDecimals: false,
+								decimals: 1,
+								groupingSeparator: ',',
+								decimalSeparator: '.'
+							}
+						}">
+						<firstStatus>
+							<ObjectStatus text="{
+									path: 'businessModel>DiscontinuedDate',
+                                    type: 'sap.ui.model.type.DateTime',
+                                    formatOptions: {
+                                        pattern: 'yyyy/MM/dd HH:mm:ss'
+                                    }
+								}"/>
+						</firstStatus>
+						<ObjectAttribute text="{businessModel>ID}"/>
+						<ObjectAttribute text="{businessModel>Rating}"/>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
     </Page>
 </mvc:View>

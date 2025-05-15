@@ -79,7 +79,7 @@
         "routing": {
             "config": {
                 "routerClass": "sap.m.routing.Router",
-                "controlAggregation": "pages",
+                "controlAggregation": "masterPages",
                 "controlId": "app",
                 "transition": "slide",
                 "type": "View",
@@ -90,15 +90,15 @@
             },
             "routes": [
                 {
-                    "name": "RouteMasterView",
+                    "name": "Master",
                     "pattern": ":?query:",
                     "target": [
-                        "TargetMasterView"
+                        "MasterView"
                     ]
                 }
             ],
             "targets": {
-                "TargetMasterView": {
+                "MasterView": {
                     "id": "masterView",
                     "name": "Master"
                 }
