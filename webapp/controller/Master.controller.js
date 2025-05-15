@@ -17,14 +17,7 @@ sap.ui.define([
 			oEventBus.subscribe("fetchEmployeeData", this._fetchEmployeeData, this);
 			this.oView.setModel(new JSONModel({
                 Unit: "EUR",
-				"sQueryStr": "",
-				"maintainEmployee": {
-					"Id": "",
-					"Name": "",
-					"Age": null,
-					"Birthdate": null,
-					"Address": ""
-				}
+				"sQueryStr": ""
 			}), "viewModel");
 			this.oViewModel = this.oView.getModel("viewModel");
 			this.oView.setModel(new JSONModel({
@@ -61,7 +54,7 @@ sap.ui.define([
 				var	oFilter = new Filter({
 					filters: [
 						new Filter({
-							path: "Id",
+							path: "ID",
 							operator: FilterOperator.EQ,
 							value1: sQueryStr
 						}),
