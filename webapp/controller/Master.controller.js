@@ -13,8 +13,8 @@ sap.ui.define([
     return Controller.extend("dw.fiori.trng.lyg04.controller.MasterView", {
         onInit() {
             this.oDataModel = this.getOwnerComponent().getModel();
-			let oEventBus = this.getOwnerComponent().getEventBus();
-			oEventBus.subscribe("fetchEmployeeData", this._fetchEmployeeData, this);
+		
+			
 			this.oView.setModel(new JSONModel({
                 Unit: "EUR",
 				"sQueryStr": ""

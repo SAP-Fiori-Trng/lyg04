@@ -16,7 +16,7 @@ sap.ui.define([
 		 */
 		onInit: function() {
 			this.oDataModel = this.getOwnerComponent().getModel();
-			this.oEventBus = this.getOwnerComponent().getEventBus();
+
 			this.oView.setModel(new JSONModel({
 				"bEditState": false
 			}), "viewModel");
